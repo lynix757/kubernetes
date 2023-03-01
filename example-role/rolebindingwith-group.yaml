@@ -1,5 +1,14 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: Role
+metadata:
+  name: readonly-role
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1kind: RoleBinding
 metadata:
   name: developers-readonly
   namespace: default
