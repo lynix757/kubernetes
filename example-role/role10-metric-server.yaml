@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: metric-server-role
+rules:
+  - apiGroups: ["metrics.k8s.io"]
+    resources: ["pods", "nodes"]
+    verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: metric-server-rolebinding
+subjects:
+  - kind: ServiceAccount
+    name: metric-server
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: metric-server-role
+  apiGroup: rbac.authorization.k8s.io
