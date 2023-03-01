@@ -40,6 +40,13 @@ metadata:
 ```
 kubectl apply -f mynamespace.yaml
 ```
+### Group
+```
+kubectl create group owners
+kubectl create group developers
+kubectl create group monitoring
+```
+
 
 ### Create a Kubernetes user account:
 kubectl create secret generic myuser-secret --from-file=myuser.key --from-file=myuser.crt
