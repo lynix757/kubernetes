@@ -20,12 +20,12 @@ openssl x509 -req -in myuser.csr -signkey myuser.key -out myuser.crt -days 365
 kubectl create namespace mynamespace
 or
 vi mynamespace.yaml
-
+```
 apiVersion: v1
 kind: Namespace
 metadata:
   name: mynamespace
-
+```
 kubectl apply -f mynamespace.yaml
 
 ### Create a Kubernetes user account:
@@ -33,7 +33,7 @@ kubectl create secret generic myuser-secret --from-file=myuser.key --from-file=m
 
 ### Create a Kubernetes role:
 vi myrole.yaml
-
+```
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -43,10 +43,11 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "list", "watch"]
+```
 
 ### # Create a Kubernetes role binding:
 vi rolebinding.yaml
-
+```
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -60,10 +61,11 @@ roleRef:
   kind: Role
   name: myrole
   apiGroup: rbac.authorization.k8s.io
+```
 
 ### Grant access to the Kubernetes namespace:
 vi grant-myrole.yaml
-
+```
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -77,6 +79,5 @@ roleRef:
   kind: Role
   name: myrole
   apiGroup: rbac.authorization.k8s.io
-
-
+```
 
