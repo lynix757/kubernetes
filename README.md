@@ -1,5 +1,7 @@
 
 # kubernetes
+## Join Cluster
+https://stackoverflow.com/questions/47126779/join-cluster-after-init-token-expired
 
 ## Kubernetes role-based access control (RBAC) 
 ### Create a private key:
